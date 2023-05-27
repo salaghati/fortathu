@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <title>Sensor Values</title>
+  <style>
+    /* Your CSS will go here */
+    @font-face {
+      font-family: 'SpecialFont';
+      /* Replace 'path/to/font.woff2' and 'path/to/font.woff' with the actual paths to your font files */
+    }
+
+    body {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 20px;
+      background: linear-gradient(to right, #f5f5f5, #d3d3d3);
+      font-family: 'SpecialFont', Arial, sans-serif;
+    }
+
+
+    .dashboard-right {
+        position: absolute;
+      margin-top: 110vh;
+      width: 40%;
+      background-color: #f9f9f9;
+      padding: 20px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    h1 {
+      font-size: 36px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #555;
+      line-height: 1.5;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    h2 {
+      font-size: 30px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #008CBA;
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      transition-duration: 0.4s;
+      border-radius: 4px;
+    }
+    .navbar-expander{
+      position: fixed;
+      top:0px;
+      left:0px;
+      width: 100%;
+      height:100vh;
+    }
+    button:hover {
+      background-color: #4CAF50;
+    }
+  </style>
+  <div class="navbar-expander">
+    <nav class="navbar navbar-light" style="background-color: #427fe2;">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#" style="color: black">IOT Dashboard - Group 2</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="index.html" style="color: black">Home</a></li>
+          <li><a href="current_value.html" style="color: black">Current Value</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</head>
+<body>
+<div class="dashboard-right" >
+  <h2>Sensor Values</h2>
+  <p>Temperature: {{ temperature }}°C</p>
+  <p>Humidity: {{ humidity }}%</p>
+  <p>Light Insensity: {{ light_intensity }} lux</p>
+  <h2>Control LEDs</h2>
+  <button id="toggle-led-1">Toggle LED 1</button>
+  <button id="toggle-led-2">Toggle LED 2</button>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $('#toggle-led-1').click(function () {
+      $.get('/Group2CTTT', function (data) {
+        console.log(data);
+      });
+    });
+
+    $('#toggle-led-2').click(function () {
+      $.get('/Group2CTTT', function (data) {
+        console.log(data);
+      });
+    });
+  });
+</script>
+</body>
+</html>

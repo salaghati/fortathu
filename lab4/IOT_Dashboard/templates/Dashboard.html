@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Your CSS will go here */
+        @font-face {
+            font-family: 'SpecialFont';
+            /* Replace 'path/to/font.woff2' and 'path/to/font.woff' with the actual paths to your font files */
+        }
+
+        body {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+            background: linear-gradient(to right, #f5f5f5, #d3d3d3);
+            font-family: 'SpecialFont', Arial, sans-serif;
+        }
+
+        .dashboard-left {
+            width: 50%;
+        }
+
+        .dashboard-right {
+            width: 40%;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-left">
+        <h1>Welcome to the Dashboard</h1>
+        <p>Hello, User!</p>
+        <h2>Group Information</h2>
+        <p>Group 1</p>
+        <h2>Device Status</h2>
+        <p>Device 1 - Active - Last connected: 2023-05-17 10:00:00</p>
+        <p>Device 2 - Inactive - Last connected: 2023-05-17 09:00:00</p>
+        <img src="path/to/image.jpg" alt="Device Image" width="300">
+        <!-- Replace 'path/to/image.jpg' with the actual path to your image -->
+    </div>
+
+    <div class="dashboard-right">
+        <h2>Sensor Values</h2>
+        <p>Temperature: {{ temperature }}°C</p>
+        <p>Humidity: {{ humidity }}%</p>
+        <h2>Control LEDs</h2>
+        <button id="toggle-led-1">Toggle LED 1</button>
+        <button id="toggle-led-2">Toggle LED 2</button>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#toggle-led-1').click(function () {
+                // Replace the URL with your actual API endpoint
+                $.get('/api/toggle_led/1', function (data) {
+                    console.log(data);
+                });
+            });
+
+            $('#toggle-led-2').click(function () {
+                // Replace the URL with your actual API endpoint
+                $.get('/api/toggle_led/2', function (data) {
+                    console.log(data);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
